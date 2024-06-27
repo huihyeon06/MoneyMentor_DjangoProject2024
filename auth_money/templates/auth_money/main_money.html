@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Mentor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F8F8F8;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        header img {
+            height: 40px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .container-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 600px; /* 추가된 부분 */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .left-right-wrapper {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .left-column {
+            width: 60%;
+            padding-right: 10px;
+        }
+        .right-column {
+            width: 40%;
+            padding-left: 10px;
+        }
+        .best-seller {
+            background-color: #006769;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        .best-seller img {
+            max-width: 50%;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .best-seller p {
+            margin: 10px 0 0;
+        }
+        .economic-terms {
+            background-color: #E0F7FA;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .economic-terms a {
+            display: block;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #C8E6C9;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #logoimg {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img id="logoimg" src="../../static/auth_money/images/moneymentor_log.png" alt="Money Mentor Logo">
+        </a>
+        <nav>
+            <a href="#">콘텐츠 리뷰</a>
+            <a href="#">금융 용어집</a>
+            <a href="/login/">관리자</a>
+        </nav>
+    </header>
+    <div class="container-wrapper">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="left-right-wrapper">
+                <div class="left-column">
+                    <div class="best-seller">
+                        <img src="../../static/auth_money/images/trandkoreabook.png" alt="트렌드 코리아 2024">
+                        <div>
+                            <h2><p>오늘의 베스트셀러 보러가기</p></h2>
+                            <p>저자 : 김난도, 전미영, 최지혜...</p>
+                            <h4><p>모든 일은 서서히 준비되고 있다가 갑작스럽게 나타난다. 챗GPT가 그랬다. 인공지능 기술과 이야기가 수도 없이 나왔지만, 챗GPT만큼 우리에게 충격을 주는 것은 없었다. 무엇이 달랐던 것일까? ‘자연어’ 소통이 가능하다는 점일 것이다. “가장 인기 있는 새로운 프로그래밍 언어는 영어”라는 말이 나오는 이유다. 여기서 말하는 ‘영어’는 한국어도 될 수 있고, 일본어도 될 수 있다. 그러니까 그냥 평상시의 말과 글로 이루어지는 인공지능 시대에 돌입한 것이다. 모든 학자들이, 모든 책들이 ‘AI’와 ‘인공지능’, ‘챗GPT’를 얘기하는 이 시점에서 『트렌드 코리아 2024』는 인간의 역할 혹은 역량에 주목했다. 중요한 점은 이것이다. 즉, AI는 자신이 내놓은 결과물을 평가할 수 없다. 그것에 점수를 매기고 그 결과물을 채택할지 말지를 결정하는 것은 궁극적으로 인간의 몫이다.</p></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="economic-terms">
+                        <h3>오늘의 경제 용어</h3>
+                        <a href="#">국내총생산</a>
+                        <a href="#">국민총생산</a>
+                        <a href="#">인플레이션</a>
+                        <a href="#">디플레이션</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

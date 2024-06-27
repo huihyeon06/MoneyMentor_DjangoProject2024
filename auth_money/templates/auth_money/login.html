@@ -1,0 +1,95 @@
+<!-- myapp/templates/myapp/login.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var userid = document.getElementById('userid').value.trim();
+            var password = document.getElementById('password').value.trim();
+            var errorMessage = document.getElementById('error-message');
+
+            if (userid === '' || password === '') {
+                errorMessage.innerText = 'Please enter both User ID and Password';
+                return false; // 폼 제출 방지
+            }
+
+            if (userid !== 'admin' || password !== '1234') {
+                errorMessage.innerText = 'User ID 또는 Password가 틀렸습니다';
+                return false; // 폼 제출 방지
+            }
+            return true; // 폼 제출 허용
+        }
+
+        function clearErrorMessage() {
+            var errorMessage = document.getElementById('error-message');
+            errorMessage.innerText = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="userid">User ID:</label>
+            <input type="text" id="userid" name="userid" placeholder="Enter User ID" oninput="clearErrorMessage()" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" oninput="clearErrorMessage()" required>
+            <button type="submit">Login</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+</body>
+</html>
