@@ -18,4 +18,6 @@ urlpatterns = [
     path('term_create/', views.TermCreate.as_view(), name='term_create'),
     path('term_update/<int:pk>', views.TermUpdate.as_view(), name='term_update'),
     path('term_delete/<int:pk>', views.TermDelete.as_view(), name='term_delete'),
+    path('term_list_na/', views.term_list_view, name="term_list_na"),
+    path('search_terms/', views.search_terms_view, name='search_terms'),
 ]
