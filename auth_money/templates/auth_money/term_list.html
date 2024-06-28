@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
-
-{% block title %}Term List{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Term List{% endblock %}</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,19 +18,19 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #007BFF;
+            border-bottom: 2px solid #40A578;
         }
 
         .header h1 {
             margin: 0;
-            color: #333;
+            color: #006769;
             font-size: 2.5em;
         }
 
         .add-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007BFF;
+            background-color: #40A578;
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
@@ -39,7 +40,24 @@
         }
 
         .add-button:hover {
-            background-color: #0056b3;
+            background-color: #006769;
+            transform: translateY(-2px);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #40A578;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: #006769;
             transform: translateY(-2px);
         }
 
@@ -66,7 +84,7 @@
         }
 
         th {
-            background-color: #007BFF;
+            background-color: #40A578;
             color: #fff;
             font-weight: bold;
         }
@@ -81,22 +99,22 @@
 
         tr td:first-child {
             font-weight: bold;
-            color: #007BFF;
+            color: #40A578;
         }
 
         .edit-link {
-            color: #007BFF;
+            color: #40A578;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .edit-link:hover {
-            color: #0056b3;
+            color: #006769;
         }
 
         .delete-button {
             padding: 10px 20px;
-            background-color: #FF0000;
+            background-color: #9DDE8B;
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
@@ -106,7 +124,7 @@
         }
 
         .delete-button:hover {
-            background-color: #cc0000;
+            background-color: #40A578;
             transform: translateY(-2px);
         }
 
@@ -115,7 +133,7 @@
                 font-size: 2em;
             }
 
-            .add-button {
+            .add-button, .back-button {
                 font-size: 0.9em;
                 padding: 8px 16px;
             }
@@ -125,31 +143,38 @@
             }
         }
     </style>
-
-    <div class="header">
-        <h1>Term List</h1>
-        <a href="{% url 'auth_money:term_create' %}" class="add-button">Add Term</a>
-    </div>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Term</th>
-                    <th>Definition</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for term in term_list %}
+</head>
+<body>
+    {% block content %}
+        <div class="header">
+            <a href="/add_money/" class="back-button">뒤로가기</a>
+            <h1>Term List</h1>
+            <div>
+                <a href="{% url 'auth_money:term_create' %}" class="add-button">Add Term</a>
+            </div>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <td><a href="{% url 'auth_money:term_update' term.id %}" class="edit-link">{{ term.name }}</a></td>
-                        <td>{{ term.substance }}</td>
-                        <td>
-                            <a href="{% url 'auth_money:term_delete' term.id %}" class="delete-button">Delete</a>
-                        </td>
+                        <th>Term</th>
+                        <th>Definition</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-{% endblock %}
+                </thead>
+                <tbody>
+                    {% for term in term_list %}
+                        <tr>
+                            <td><a href="{% url 'auth_money:term_update' term.id %}" class="edit-link">{{ term.name }}</a></td>
+                            <td>{{ term.substance }}</td>
+                            <td>
+                                <a href="{% url 'auth_money:term_delete' term.id %}" class="delete-button">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+</body>
+</html>
