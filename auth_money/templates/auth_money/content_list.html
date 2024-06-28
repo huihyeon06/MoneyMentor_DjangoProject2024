@@ -6,10 +6,10 @@
     <title>{% block title %}Contents List{% endblock %}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #eef2f7;
         }
 
         .header-container {
@@ -17,12 +17,31 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007BFF;
         }
 
         .header-container h1 {
             margin: 0;
-            text-align: center;
-            flex-grow: 1;
+            color: #333;
+            font-size: 2.5em;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         ul {
@@ -37,14 +56,22 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
 
         h2 {
-            color: #555;
+            color: #007BFF;
+            margin: 0 0 10px;
         }
 
         p {
             color: #666;
+            margin: 0 0 10px;
         }
 
         img {
@@ -52,29 +79,13 @@
             margin: 10px 0;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 150px;
+            max-height: 150px;
         }
 
         .no-image {
             color: #999;
             font-style: italic;
-        }
-
-        .button-container {
-            text-align: right;
-        }
-
-        .button-container a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .button-container a:hover {
-            background-color: #0056b3;
         }
 
         .edit-button, .delete-button {
@@ -85,7 +96,9 @@
             color: #fff;
             text-decoration: none;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .edit-button {
@@ -95,6 +108,7 @@
 
         .edit-button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         .delete-button {
@@ -104,15 +118,64 @@
 
         .delete-button:hover {
             background-color: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .button-container {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container a:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header-container h1 {
+                font-size: 2em;
+            }
+
+            .back-button, .button-container a {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            li {
+                padding: 15px;
+            }
+
+            .edit-button, .delete-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+
+            .edit-button {
+                right: 110px;
+            }
+
+            .delete-button {
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
     {% block content %}
         <div class="header-container">
-            <a href="/add_money/">
-                <img src="../../static/auth_money/images/moneyback.png" alt="뒤로가기">
-            </a>
+            <a href="/add_money/" class="back-button">뒤로가기</a>
             <h1>Contents List</h1>
         </div>
         <ul>
@@ -121,7 +184,7 @@
                     <h2>{{ content.name }}</h2>
                     <p>{{ content.substance }}</p>
                     {% if content.contents_img %}
-                        <img src="{{ content.contents_img.url }}" alt="{{ content.name }}" style="max-width: 200px; max-height: 200px;">
+                        <img src="{{ content.contents_img.url }}" alt="{{ content.name }}">
                     {% else %}
                         <p class="no-image">No Image Available</p>
                     {% endif %}

@@ -12,5 +12,10 @@ urlpatterns = [
     path('content_create/', views.ContentsCreate.as_view(), name="content_create"),
     path('content_update/<int:pk>/', views.ContentsUpdate.as_view(), name="content_update"),
     path('content_delete/<int:pk>/', views.ContentsDelete.as_view(), name="content_delete"),
-    path('content_review/', views.content_review_view, name="content_review")
+    path('content_review/', views.content_review_view, name="content_review"),
+
+    path('term_list/', views.TermList.as_view(), name='term_list'),
+    path('term_create/', views.TermCreate.as_view(), name='term_create'),
+    path('term_update/<int:pk>', views.TermUpdate.as_view(), name='term_update'),
+    path('term_delete/<int:pk>', views.TermDelete.as_view(), name='term_delete'),
 ]
